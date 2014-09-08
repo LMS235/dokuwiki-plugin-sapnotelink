@@ -10,7 +10,6 @@
 if (!defined('DOKU_INC')) die();
 
 # SAP Hinweis URL
-
 global $sapnote_url;
 $sapnote_url = "https://service.sap.com/sap/support/notes";
 
@@ -29,8 +28,7 @@ class syntax_plugin_sapnotelink extends DokuWiki_Syntax_Plugin {
         return 256;
     }
 	
-# reagiert auf alles was mit SAP# oder sap# beginnt und 1 - 10 Zahlen folgen
-	
+    # reagiert auf alles was mit SAP# oder sap# beginnt und 1 - 10 Zahlen folgen
     public function connectTo($mode) {
 	    $this->Lexer->addSpecialPattern('SAP#[0-9]{1,10}',$mode,'plugin_sapnotelink');
 		$this->Lexer->addSpecialPattern('sap#[0-9]{1,10}',$mode,'plugin_sapnotelink');
@@ -45,12 +43,14 @@ class syntax_plugin_sapnotelink extends DokuWiki_Syntax_Plugin {
 		
 	public function render($mode, Doku_Renderer &$renderer, $data) {
 		global $sapnote_url;
+		# normale Ausgabe
         if($mode == 'xhtml'){
             $sapnote = explode('#', $data[0]);
             $url = $sapnote_url."/".$sapnote[1];
                 $renderer->doc .= "<a href=\"".$url."\" target=\"_blank\"><img src=\"lib/plugins/sapnotelink/sap.gif\" alt=\"SAP Hinweis ".$sapnote[1]."\"> ".$sapnote[1]."</a>";
             return true;
         }
+		# ODT Export
 		elseif ($mode == 'odt'){
             $sapnote = explode('#', $data[0]);
             $url = $sapnote_url."/".$sapnote[1];
