@@ -9,13 +9,6 @@
 // must be run within Dokuwiki
 if (!defined('DOKU_INC')) die();
 
-<<<<<<< HEAD
-=======
-# SAP Hinweis URL
-global $sapnote_url;
-$sapnote_url = "https://service.sap.com/sap/support/notes";
-
->>>>>>> origin/master
 class syntax_plugin_sapnotelink extends DokuWiki_Syntax_Plugin {
 
 
