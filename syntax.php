@@ -9,11 +9,6 @@
 // must be run within Dokuwiki
 if (!defined('DOKU_INC')) die();
 
-# SAP Hinweis URL
-
-global $sapnote_url;
-$sapnote_url = "https://service.sap.com/sap/support/notes";
-
 class syntax_plugin_sapnotelink extends DokuWiki_Syntax_Plugin {
 
 
@@ -44,16 +39,14 @@ class syntax_plugin_sapnotelink extends DokuWiki_Syntax_Plugin {
     }
 		
 	public function render($mode, Doku_Renderer &$renderer, $data) {
-		global $sapnote_url;
         if($mode == 'xhtml'){
             $sapnote = explode('#', $data[0]);
-            $url = $sapnote_url."/".$sapnote[1];
-                $renderer->doc .= "<a href=\"".$url."\" target=\"_blank\"><img src=\"lib/plugins/sapnotelink/sap.gif\" alt=\"SAP Hinweis ".$sapnote[1]."\"> ".$sapnote[1]."</a>";
+            $url = $this->getConf('sapnoteurl')."/".$sapnote[1];
+                $renderer->doc .= "<a href=\"".$url."\" target=\"_blank\"><img src=\"".DOKU_BASE."lib/plugins/sapnotelink/images/sap.gif\" alt=\"".$this->getLang('url_alt')." ".$sapnote[1]."\"> ".$sapnote[1]."</a>";
             return true;
         }
 		elseif ($mode == 'odt'){
             $sapnote = explode('#', $data[0]);
-            $url = $sapnote_url."/".$sapnote[1];
                 $renderer->doc .= "$sapnote[1]";
             return true;
         }
