@@ -11,7 +11,6 @@ if (!defined('DOKU_INC')) die();
 
 class syntax_plugin_sapnotelink extends DokuWiki_Syntax_Plugin {
 
-
     public function getType() {
         return 'substition';
     }
@@ -24,12 +23,11 @@ class syntax_plugin_sapnotelink extends DokuWiki_Syntax_Plugin {
         return 256;
     }
 	
-    # reagiert auf alles was mit SAP# oder sap# beginnt und 1 - 10 Zahlen folgen
+	# responds to everything starts with SAP# or sap# followed by  1 - 10 numbers
     public function connectTo($mode) {
 	    $this->Lexer->addSpecialPattern('SAP#[0-9]{1,10}',$mode,'plugin_sapnotelink');
 		$this->Lexer->addSpecialPattern('sap#[0-9]{1,10}',$mode,'plugin_sapnotelink');
     }
-
 
     public function handle($match, $state, $pos, Doku_Handler &$handler){
         $data = array($match, $state);
@@ -38,14 +36,14 @@ class syntax_plugin_sapnotelink extends DokuWiki_Syntax_Plugin {
     }
 		
 	public function render($mode, Doku_Renderer &$renderer, $data) {
-		# normale Ausgabe
+		# Dokuwiki Renderer
         if($mode == 'xhtml'){
             $sapnote = explode('#', $data[0]);
             $url = $this->getConf('sapnoteurl')."/".$sapnote[1];
                 $renderer->doc .= "<a href=\"".$url."\" target=\"_blank\"><img src=\"".DOKU_BASE."lib/plugins/sapnotelink/images/sap.gif\" alt=\"".$this->getLang('url_alt')." ".$sapnote[1]."\"> ".$sapnote[1]."</a>";
             return true;
         }
-		# ODT Export
+		# ODT Export Renderer
 		elseif ($mode == 'odt'){
             $sapnote = explode('#', $data[0]);
                 $renderer->doc .= "$sapnote[1]";
