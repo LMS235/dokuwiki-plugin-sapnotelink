@@ -29,13 +29,13 @@ class syntax_plugin_sapnotelink extends DokuWiki_Syntax_Plugin {
 		$this->Lexer->addSpecialPattern('sap#[0-9]{1,10}',$mode,'plugin_sapnotelink');
     }
 
-    public function handle($match, $state, $pos, Doku_Handler &$handler){
+    public function handle($match, $state, $pos, Doku_Handler $handler){
         $data = array($match, $state);
 
         return $data;
     }
 		
-	public function render($mode, Doku_Renderer &$renderer, $data) {
+	public function render($mode, Doku_Renderer $renderer, $data) {
 		# Dokuwiki Renderer
         if($mode == 'xhtml'){
             $sapnote = explode('#', $data[0]);
