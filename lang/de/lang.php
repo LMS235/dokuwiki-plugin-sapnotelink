@@ -5,4 +5,4 @@
  * @author Florian Lamml <info@florian-lamml.de>
  */
 $lang['url_alt'] 		= 'SAP Hinweis ';
-$lang['toolbar_icon'] 	= 'SAP Hinweis einf&uuml;gen';
+$lang['toolbar_icon'] 	= 'SAP Hinweis einfügen';
