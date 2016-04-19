@@ -4,5 +4,6 @@
  * 
  * @author Florian Lamml <info@florian-lamml.de>
  */
+
 $lang['url_alt'] 			= 'SAP Note';
 $lang['toolbar_icon'] 		= 'Insert SAP Note';

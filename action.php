@@ -5,6 +5,7 @@
  * @license GPL 2 http://www.gnu.org/licenses/gpl-2.0.html
  * @author  Florian Lamml <info@florian-lamml.de>
  */
+
 if (!defined('DOKU_INC')) die();
 class action_plugin_sapnotelink extends DokuWiki_Action_Plugin {
     /**
