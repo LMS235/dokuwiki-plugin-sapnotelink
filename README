@@ -2,7 +2,7 @@ sapnotelink Plugin for DokuWiki
 
 simply create links to sap notes
 
-convert SAP#1234 or sap#1234 direkt to http://service.sap.com/sap/support/notes/1234
+convert SAP#1234 or sap#1234 direkt to https://launchpad.support.sap.com/#/notes/1234
 
 All documentation for this plugin can be found at
 https://www.dokuwiki.org/plugin:sapnotelink
