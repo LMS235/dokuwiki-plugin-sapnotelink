@@ -45,9 +45,17 @@ class syntax_plugin_sapnotelink extends DokuWiki_Syntax_Plugin {
         }
 		# ODT Export Renderer
 		elseif ($mode == 'odt'){
-            $sapnote = explode('#', $data[0]);
+			if (!class_exists('ODTDocument')) {
+				// support of "old" dokuwiki-plugin-odt
+				$sapnote = explode('#', $data[0]);
                 $renderer->doc .= "$sapnote[1]";
-            return true;
+				return true;
+			} else {
+				// support of redesign dokuwiki-plugin-odt
+				$sapnote = explode('#', $data[0]);
+                $renderer->cdata ("$sapnote[1]");
+				return true;
+			}
         }
         return false;
     }
