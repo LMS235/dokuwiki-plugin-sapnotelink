@@ -1,7 +1,7 @@
 base   sapnotelink
 author Florian Lamml
 email  info@florian-lamml.de
-date   2016-06-19
+date   2019-10-14
 name   sapnotelink plugin
 desc   simply create links to sap notes
 url    http://www.dokuwiki.org/plugin:sapnotelink
